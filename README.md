@@ -55,7 +55,7 @@ Write, using the tkinter module, a window graphical application that illustrates
 !python LeastSquares.py
 ```
 
-![LeastSquares](C:\Users\wangz\Documents\Github\SpecialComputerWorkshop\README\Pic\LeastSquares.png)
+![LeastSquares](https://github.com/sirenexcelsior/SpecialComputerWorkshop/blob/main/README/Pic/LeastSquares.png)
 
 ### 05_MAE
 
@@ -65,4 +65,4 @@ Complete the program "[huberRegression.py](http://mech.math.msu.su/~vvb/Master/h
 !python HR.py
 ```
 
-![HR](C:\Users\wangz\Documents\Github\SpecialComputerWorkshop\README\Pic\HR.png)
+![HR](https://github.com/sirenexcelsior/SpecialComputerWorkshop/blob/main/README/Pic/HR.png)
