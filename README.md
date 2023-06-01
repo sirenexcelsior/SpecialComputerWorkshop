@@ -46,3 +46,23 @@ Solve a system of linear equations with a non-singular square real matrix:
 `x = solveLinearSystem(a, b)`
 
 Here $a$ is a matrix of real numbers, $b$ is an array of free terms of the equations. The function should return an array of x real numbers representing the solution of the system $a*x = b$.
+
+### 04_RegressionProblem
+
+Write, using the tkinter module, a window graphical application that illustrates the method of least squares. The user marks a set of points on the plane with the mouse, the program has to find a polynomial of a given degree that minimizes the sum of the squares of the deviations of the polynomial values from the values given by the interpolation nodes.
+
+```python
+!python LeastSquares.py
+```
+
+![LeastSquares](C:\Users\wangz\Documents\Github\SpecialComputerWorkshop\README\Pic\LeastSquares.png)
+
+### 05_MAE
+
+Complete the program "[huberRegression.py](http://mech.math.msu.su/~vvb/Master/huberRegression.py)", which computes a linear regression using either the least squares method (i.e. minimising the quadratic error function of the MSE) or minimising the error function defined using the Huber function. Archive of all program files: "[huberRegression.zip](http://mech.math.msu.su/~vvb/Master/huberRegression.zip)". The program should additionally realize the third way of regression parameter calculation, which minimizes the mean value of absolute error MAE using linear programming methods. The modified program should look like this:
+
+```python
+!python HR.py
+```
+
+![HR](C:\Users\wangz\Documents\Github\SpecialComputerWorkshop\README\Pic\HR.png)
