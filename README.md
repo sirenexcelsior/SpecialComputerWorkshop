@@ -66,3 +66,20 @@ Complete the program "[huberRegression.py](http://mech.math.msu.su/~vvb/Master/h
 ```
 
 ![HR](https://github.com/sirenexcelsior/SpecialComputerWorkshop/blob/main/README/Pic/HR.png)
+
+### 06_Geometry
+
+The solutions to all problems should be designed as functions in Sage (similar to functions in Python). For example, in the problem "Draw a triangle, an incircle and a Jergon point" the solution is presented as a function, which inputs 3 points and returns a graphical object.
+
+Example solution of the problem: draw the triangle, the incircle and the circumcircle around it and also represent the process of their construction - the bisectors and the midpoint perpendiculars.
+The code for the sage program is: "[geometry.sage](http://mech.math.msu.su/~vvb/Master/geometry.sage)".
+Example of using the function:
+
+```python
+sage: load("geometry.sage")
+sage: a = vector([0, 0]); b = vector([5, 1]); c = vector([3, 5])
+sage: drawTriangle(a, b, c)
+```
+
+#### Gergon.sage
+

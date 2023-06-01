@@ -88,7 +88,7 @@ def intersec(a, b, c):
     return foot_ab, foot_bc, foot_ca
 
 '''Draw a triangle with inscribed and circum circles'''
-def drawGergon(a, b, c):
+def drawTriangle(a, b, c):
     inc = incircle(a, b, c)
     t = line([a, b, c, a], color="black")
     circ = circle(inc[0], inc[1], color="red")
