@@ -83,3 +83,12 @@ sage: drawTriangle(a, b, c)
 
 #### Gergon.sage
 
+<img src="https://github.com/sirenexcelsior/SpecialComputerWorkshop/blob/main/README/Pic/Gergon.png?raw=true" alt="Gergon.png" style="zoom:50%;" />
+
+#### Nagel.sage
+
+<img src="https://github.com/sirenexcelsior/SpecialComputerWorkshop/blob/main/README/Pic/Nagel.png?raw=true" alt="Nagel.png" style="zoom:50%;" />
+
+#### Lemoine.sage
+
+<img src="https://github.com/sirenexcelsior/SpecialComputerWorkshop/blob/main/README/Pic/Lemoine.png?raw=true" alt="Lemoine.png" style="zoom:50%;" />
