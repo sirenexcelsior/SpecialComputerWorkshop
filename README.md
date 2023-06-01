@@ -81,14 +81,7 @@ sage: a = vector([0, 0]); b = vector([5, 1]); c = vector([3, 5])
 sage: drawTriangle(a, b, c)
 ```
 
-#### Gergon.sage
+#### Gergon.sage, Nagel.sage, Lemoine.sage
 
-<img src="https://github.com/sirenexcelsior/SpecialComputerWorkshop/blob/main/README/Pic/Gergon.png?raw=true" alt="Gergon.png" style="zoom:50%;" />
+<img src="https://github.com/sirenexcelsior/SpecialComputerWorkshop/blob/main/README/Pic/Gergon.png?raw=true" alt="Gergon.png" style="zoom:30%;" /><img src="https://github.com/sirenexcelsior/SpecialComputerWorkshop/blob/main/README/Pic/Nagel.png?raw=true" alt="Nagel.png" style="zoom:30%;" /><img src="https://github.com/sirenexcelsior/SpecialComputerWorkshop/blob/main/README/Pic/Lemoine.png?raw=true" alt="Lemoine.png" style="zoom:30%;" />
 
-#### Nagel.sage
-
-<img src="https://github.com/sirenexcelsior/SpecialComputerWorkshop/blob/main/README/Pic/Nagel.png?raw=true" alt="Nagel.png" style="zoom:50%;" />
-
-#### Lemoine.sage
-
-<img src="https://github.com/sirenexcelsior/SpecialComputerWorkshop/blob/main/README/Pic/Lemoine.png?raw=true" alt="Lemoine.png" style="zoom:50%;" />
