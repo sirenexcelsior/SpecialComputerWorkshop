@@ -1,6 +1,16 @@
 from math import gcd
 from random import randint
 
+'''
+这段代码实现了Lenstra算法用于对一个整数进行因数分解。Lenstra算法是一种基于椭圆曲线的算法，可以用来分解较小的整数。
+该算法通过在椭圆曲线上选择随机点，并使用点加法操作来寻找椭圆曲线上的非平凡因子。
+
+示例：
+>> from Lenstra import *
+>> factors(102030)
+>> [2, 3, 19, 895]
+'''
+
 def lenstra(n, max_iterations=1000): # 定义 Lenstra 算法函数，n 为要分解的整数，max_iterations 为最大迭代次数
     if n % 2 == 0: # 如果 n 是偶数
         return 2 # 返回因子 2
@@ -24,5 +34,3 @@ def factors(n):
         factors.append(factor)
         n //= factor
     return factors
-
-print(factors(int(input("Please enter an integer:"))))

@@ -1,6 +1,15 @@
 from math import gcd
 import random
 
+'''
+该代码实现了Pollard Rho算法来分解一个给定的正整数。
+Pollard Rho算法是一种用于因数分解的随机算法，能够有效地分解大整数。
+示例：
+>> from Pollardrho import *
+>> factors(102030)
+>> [30, 179, 19]
+'''
+
 def pollard_rho(n):
     x = random.randint(2, n - 1)
     y = x
@@ -50,5 +59,3 @@ def factors(n):
         factors.append(factor)
         n //= factor
     return factors
-
-print(factors(int(input("Please enter an integer: "))))

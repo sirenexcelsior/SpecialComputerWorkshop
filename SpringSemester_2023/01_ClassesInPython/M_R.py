@@ -1,6 +1,13 @@
-# 1.1.1 米勒-拉宾的概率简单性检验
+# 米勒-拉宾的概率简单性检验
 
 import random
+
+'''
+示例：
+>> from M_R import *
+>> miller_rabin(n=102030, k=3)
+>> False
+'''
 
 def miller_rabin(n, k):
     # 检查n是否是素数，k是测试的精度
@@ -29,11 +36,3 @@ def miller_rabin(n, k):
         else:
             return False   # 如果x不等于n-1，则n一定不是素数
     return True   # n可能是素数
-
-# 示例
-n = int(input("Please enter a number to be checked: n= "))
-k = int(input("Please enter the precision: k="))
-if miller_rabin(n, k):
-    print(n, "may be a prime number")
-else:
-    print(n, "is not a prime number")
