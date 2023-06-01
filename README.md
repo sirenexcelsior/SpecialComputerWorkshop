@@ -33,13 +33,16 @@ There are 2 options in the task and one task is to be done. Students with odd nu
 The problems assume that matrices and linear arrays are represented by numpy-arrays like numpy.ndarray. In all variants, use the already prepared function
 
 `(rank, det) = gauss(a)`
+
 which brings matrix a to a step form and returns matrix rank and determinant (for a non-square matrix the determinant is not calculated and returns 0). Matrix a is represented as a two-dimensional numpy array with real values. The function is implemented in the file "gauss.py".
 Note again that the function should not print anything (and certainly should not enter anything from the keyboard!). The result of the function's work should be the calculation of the required object, which the function should return using the operator return. The initial arguments of the function should not be changed.
 
 Calculate the inverse matrix to the nondegenerate square real matrix:
 
  `b = inverseMatrix(a)`
+
 Solve a system of linear equations with a non-singular square real matrix:
 
 `x = solveLinearSystem(a, b)`
+
 Here $a$ is a matrix of real numbers, $b$ is an array of free terms of the equations. The function should return an array of x real numbers representing the solution of the system $a*x = b$.
