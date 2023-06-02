@@ -4,7 +4,7 @@ def gauss(a, eps = 1e-8):
     '''Reduce the matrix a to the row echelon form.
        Return the tuple: (rank(a), det(a))'''
     (m, n) = a.shape
-    i = 0   # Number of rows processeds
+    i = 0   # Number of rows processed
     j = 0   # Number of columns processed
     numSwaps = 0
     while i < m and j < n:
