@@ -3,32 +3,13 @@ from R2Graph import *
 import math
 import numpy as np
 from sklearn.linear_model import HuberRegressor, LinearRegression
-from scipy.optimize import linprog
-import cvxpy as cp
-
-def mae_regression_cvx(a, y):
-    n = a.shape[1]
-    beta = cp.Variable(n)
-    objective = cp.Minimize(cp.norm(a @ beta - y, 1))
-    problem = cp.Problem(objective)
-    problem.solve()
-    return beta.value
+from scipy.optimize import minimize
 
 def func(p, x):
     return np.polyval(p, x)
 
-def mae_regression(a, y):
-    num_vars = len(a[0]) + len(a)
-    num_constraints = len(a)
-    c = [0]*len(a[0]) + [1]*len(a)
-    bounds = [(None, None)]*len(a[0]) + [(0, None)]*len(a)
-    A = []
-    for i in range(num_constraints):
-        A.append(list(a[i]) + [-1]*i + [-1] + [0]*(num_constraints-i-1))
-        A.append(list(a[i]) + [0]*i + [1] + [0]*(num_constraints-i-1))
-    b = list(y) + list(y)
-    res = linprog(c, A_ub=A, b_ub=b, bounds=bounds)
-    return res.x[:len(a[0])]
+def mae_loss(p, x, y):
+    return np.sum(np.abs(func(p, x) - y))
 
 def main():
     points = []
@@ -36,6 +17,7 @@ def main():
     objectIDs = []
     linearPlotID = (-1)
     huberPlotID = (-1)
+    maePlotID = (-1)
     pol = np.array([])
 
     scaleX = 40.; scaleY = 40.
@@ -71,19 +53,18 @@ def main():
     )
     lossFunctionMSERadio.pack(side=LEFT, padx=4, pady=4)
     lossFunctionHuberRadio.pack(side=LEFT, padx=4, pady=4)
-
-    root.update()
-
-    maePlotID = (-1)
-
+    
     lossFunctionMAERadio = Radiobutton(
         panel,
         text = "MAE", variable=lossFunctionIdx, value=2,
         fg = "darkGreen"
     )
+    lossFunctionMSERadio.pack(side=LEFT, padx=4, pady=4)
+    lossFunctionHuberRadio.pack(side=LEFT, padx=4, pady=4)
     lossFunctionMAERadio.pack(side=LEFT, padx=4, pady=4)
 
-
+    root.update()
+    
     def map(t):
         w = drawArea.winfo_width()
         h = drawArea.winfo_height()
@@ -153,10 +134,14 @@ def main():
         lossFunc = lossFunctionIdx.get()
         if lossFunc == 0:
             color = "blue"
+            plotID = linearPlotID
         elif lossFunc == 1:
             color = "red"
+            plotID = huberPlotID
         else:
             color = "darkGreen"
+            plotID = maePlotID
+
         t = R2Point(xMin(), func(pol, xMin()))
         dx = 0.05
         path = []
@@ -205,6 +190,7 @@ def main():
         nonlocal pol, degree, linearPlotID, huberPlotID, maePlotID
         lossFunc = lossFunctionIdx.get()
 
+        # clearPicture()
         if lossFunc == 0 and linearPlotID >= 0:
             drawArea.delete(linearPlotID)
         elif lossFunc == 1 and huberPlotID >= 0:
@@ -216,9 +202,11 @@ def main():
         m = len(points)
         if m == 0:
             return
+        # y = np.array([points[i].y for i in range(m)])
         y = np.array([points[i].y for i in range(m)])
         print("y =", y)
-        a = np.vander([points[i].x for i in range(m)], degree + 1)
+        x = np.array([points[i].x for i in range(m)])
+        a = np.vander(x, degree + 1)
         print("a =", a)
 
         if lossFunc == 0:
@@ -230,15 +218,16 @@ def main():
             huber_reg = HuberRegressor(fit_intercept=False)
             huber_reg.fit(a, y)
             pol = [huber_reg.coef_[i] for i in range(degree + 1)]
-        else:
-            pol = mae_regression_cvx(a, y)
+        else:  # MAE
+            initial_guess = np.ones(degree + 1)
+            result = minimize(mae_loss, initial_guess, args=(x, y))
+            pol = result.x
 
         print("pol =", pol)
         plotFunction()
-
         
     def clearPicture():
-        nonlocal linearPlotID, huberPlotID, maePlotID
+        nonlocal linearPlotID, huberPlotID
         for i in objectIDs:
             drawArea.delete(i)
         objectIDs.clear()
@@ -248,19 +237,14 @@ def main():
         if huberPlotID >= 0:
             drawArea.delete(huberPlotID)
             huberPlotID = (-1)
-        if maePlotID >= 0:
-            drawArea.delete(maePlotID)
-            maePlotID = (-1)
 
     def onClear():
-        nonlocal linearPlotID, huberPlotID, maePlotID
+        nonlocal linearPlotID, huberPlotID
         clearPicture()
         points.clear()
         mouseButtons.clear()
         linearPlotID = (-1) 
         huberPlotID = (-1)
-        maePlotID = (-1)
-
         
     def onConfigure(e):
         drawArea.delete("all")
@@ -276,7 +260,6 @@ def main():
     drawArea.bind("<Configure>", onConfigure)
     
     drawGrid()
-    # plotFunction()
     
     root.mainloop()
     
